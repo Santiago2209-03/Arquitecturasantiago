@@ -1,0 +1,331 @@
+{
+  "info": {
+    "name": "Universidad APIs (REST + SOAP)",
+    "description": "Colección completa de pruebas para APIs REST y SOAP de gestión de estudiantes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "REST API - Estudiantes",
+      "item": [
+        {
+          "name": "1. Listar todos los estudiantes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students"
+              ]
+            },
+            "description": "Obtiene la lista de todos los estudiantes registrados en la base de datos"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Obtener estudiante por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students",
+                "1"
+              ]
+            },
+            "description": "Obtiene los datos de un estudiante específico usando su ID"
+          },
+          "response": []
+        },
+        {
+          "name": "3. Crear nuevo estudiante",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carlos Sánchez\",\n  \"grade\": 88.5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students"
+              ]
+            },
+            "description": "Crea un nuevo estudiante en la base de datos"
+          },
+          "response": []
+        },
+        {
+          "name": "4. Actualizar estudiante",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan García Pérez\",\n  \"grade\": 90.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students",
+                "1"
+              ]
+            },
+            "description": "Actualiza los datos de un estudiante existente"
+          },
+          "response": []
+        },
+        {
+          "name": "5. Eliminar estudiante",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/students/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students",
+                "3"
+              ]
+            },
+            "description": "Elimina un estudiante de la base de datos"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "SOAP API - Estudiantes",
+      "item": [
+        {
+          "name": "0. Ver WSDL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/ws/students.wsdl",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "ws",
+                "students.wsdl"
+              ]
+            },
+            "description": "Visualiza la definición WSDL del servicio SOAP"
+          },
+          "response": []
+        },
+        {
+          "name": "1. Obtener estudiante (SOAP)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "SOAPAction",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:demo=\"http://example.com/demo/soap\">\n  <soap:Body>\n    <demo:getStudentRequest>\n      <demo:id>1</demo:id>\n    </demo:getStudentRequest>\n  </soap:Body>\n</soap:Envelope>"
+            },
+            "url": {
+              "raw": "http://localhost:8081/ws",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "ws"
+              ]
+            },
+            "description": "Obtiene los datos de un estudiante a través de SOAP"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Obtener estudiante ID 2 (SOAP)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" \n               xmlns:demo=\"http://example.com/demo/soap\">\n  <soap:Body>\n    <demo:getStudentRequest>\n      <demo:id>2</demo:id>\n    </demo:getStudentRequest>\n  </soap:Body>\n</soap:Envelope>"
+            },
+            "url": {
+              "raw": "http://localhost:8081/ws",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "ws"
+              ]
+            },
+            "description": "Obtiene los datos del estudiante con ID 2 a través de SOAP"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Datos de Prueba",
+      "item": [
+        {
+          "name": "Script: Crear 3 estudiantes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Este script crea 3 estudiantes uno tras otro",
+                  "// Copias las siguientes peticiones y las ejecutas una por una"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ana Martínez\",\n  \"grade\": 95.5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Script: Crear estudiante 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Roberto Fernández\",\n  \"grade\": 78.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Script: Crear estudiante 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sofía Rodríguez\",\n  \"grade\": 87.5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "students"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
